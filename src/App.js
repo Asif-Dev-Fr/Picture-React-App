@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import './App.css';
 
 import Search from './Components/Search';
+import AllPictures from './Components/AllPictures';
 
 import axios from 'axios';
 
@@ -15,7 +16,7 @@ const App = () => {
   })
 
   // Clé API de Pixabay
-  const API_KEY = "https://pixabay.com/api/?key=16656881-200d737a6acb845b986ac46c7";
+  const API_KEY = "https://pixabay.com/api/?key=" + process.env.REACT_APP_API_KEY;
 
   
 
@@ -76,6 +77,12 @@ const App = () => {
         <h1>Picture React App using Pixabay</h1>
         <Search searchInput={searchInput} searchButton={searchButton} searchEnter={searchEnter} />
       </header>
+      <main>
+        {state.results.map(value =>(
+          <AllPictures key={value.id} pictures={value}/>
+        ))}
+        
+      </main>
     </div>
   );
 }

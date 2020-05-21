@@ -1,3 +1,8 @@
+Picture React App 
+
+With this app, you can find the pictures that you want.
+I used using Pixabay's API to build this app. 
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts

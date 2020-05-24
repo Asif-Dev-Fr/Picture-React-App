@@ -16,7 +16,7 @@ const App = () => {
   })
 
   // Clé API de Pixabay
-  const API_KEY = "https://pixabay.com/api/?key=" + process.env.REACT_APP_API_KEY;
+  const API_KEY = "https://pixabay.com/api/?key=" + process.env.REACT_APP_API_KEY
 
   
 
@@ -78,10 +78,11 @@ const App = () => {
         <Search searchInput={searchInput} searchButton={searchButton} searchEnter={searchEnter} />
       </header>
       <main>
-        {state.results.map(value =>(
-          <AllPictures key={value.id} pictures={value}/>
-        ))}
-        
+        <div className="allPictures">
+          {state.results.map(value =>(
+            <AllPictures key={value.id} pictures={value}/>
+          ))}
+        </div>
       </main>
     </div>
   );

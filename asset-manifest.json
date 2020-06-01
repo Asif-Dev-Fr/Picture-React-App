@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/Picture-React-App/static/css/main.b6636a97.chunk.css",
+    "main.js": "/Picture-React-App/static/js/main.31cdcf66.chunk.js",
+    "main.js.map": "/Picture-React-App/static/js/main.31cdcf66.chunk.js.map",
+    "runtime-main.js": "/Picture-React-App/static/js/runtime-main.b0702ddf.js",
+    "runtime-main.js.map": "/Picture-React-App/static/js/runtime-main.b0702ddf.js.map",
+    "static/js/2.daf1dd78.chunk.js": "/Picture-React-App/static/js/2.daf1dd78.chunk.js",
+    "static/js/2.daf1dd78.chunk.js.map": "/Picture-React-App/static/js/2.daf1dd78.chunk.js.map",
+    "index.html": "/Picture-React-App/index.html",
+    "precache-manifest.bc67eb13edaf57d1b4feaca43059ee0e.js": "/Picture-React-App/precache-manifest.bc67eb13edaf57d1b4feaca43059ee0e.js",
+    "service-worker.js": "/Picture-React-App/service-worker.js",
+    "static/css/main.b6636a97.chunk.css.map": "/Picture-React-App/static/css/main.b6636a97.chunk.css.map",
+    "static/js/2.daf1dd78.chunk.js.LICENSE.txt": "/Picture-React-App/static/js/2.daf1dd78.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.b0702ddf.js",
+    "static/js/2.daf1dd78.chunk.js",
+    "static/css/main.b6636a97.chunk.css",
+    "static/js/main.31cdcf66.chunk.js"
+  ]
+}

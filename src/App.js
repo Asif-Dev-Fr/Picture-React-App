@@ -3,6 +3,7 @@ import './App.css';
 
 import Search from './Components/Search';
 import AllPictures from './Components/AllPictures';
+import Pagination from './Components/Pagination';
 
 import axios from 'axios';
 
@@ -12,7 +13,10 @@ const App = () => {
   const [state, setState] = useState({
     search: '',
     results: [],
-    select: {}
+    select: {},
+    currentPage: (1),
+    picturesPerPage: (10),
+    totalHits: '',
   })
 
   // Clé API de Pixabay
@@ -27,7 +31,7 @@ const App = () => {
     setState(prevState => {
       return {...prevState, search : searchPicture}
     });
-    console.log(state.search);
+    // console.log(state.search);
   }
   
   // la fonction rechercher avec le button :
@@ -41,48 +45,74 @@ const App = () => {
   }
   */
 
-  const picturePerPage = "&per_page=30";
+  const nbrTotalOfPicture = process.env.REACT_APP_PICTURES_NUMBER;
 
-  const searchButton = (e) => {
+  const searchButton = () => {
    // Un array data.data.hits pour récupèrer les images depuis cette API (on peut mettre le paramètre data de la méthode then entre accolade pour acceder à la deuxième dimension du array et puis seulement affecter data.hits à la variable resultPictures)
-    axios(API_KEY + "&q=" + state.search + picturePerPage ).then((data) => {
+    axios(API_KEY + "&q=" + state.search + nbrTotalOfPicture ).then((data) => {
       let resultPictures = data.data.hits;
-      console.log(data);
+      let totalHitsOfPictures = data.data.totalHits;
+      console.log(totalHitsOfPictures);
       console.log(resultPictures);
 
       // on récupère les informations de data.hits qu'on stocke dans une variable et puis on l'affecte à la propriété results de l'objet state qui est un tableau vide par défaut. 
       setState(prevState => {
-        return {...prevState, results : resultPictures}
+        return {...prevState, results : resultPictures, totalHits : totalHitsOfPictures}
       })
     })
   }
 
   const searchEnter = (event) => {
     if (event.key === 'Enter') {
-      axios(API_KEY + "&q=" + state.search + picturePerPage ).then(({data}) => {
+      axios(API_KEY + "&q=" + state.search + nbrTotalOfPicture ).then(({data}) => {
         let resultPicturesWithEnter = data.hits;
+        let totalHitsOfPictures = data.totalHits;
         console.log(resultPicturesWithEnter);
+        // console.log(totalHitsOfPictures);
 
         setState(prevState => {
-          return {...prevState, results : resultPicturesWithEnter}
+          return {...prevState, results : resultPicturesWithEnter, totalHits: totalHitsOfPictures}
         })
       })
     }
   }
 
+  // Pagination : 
+  const indexOfLastPicture = state.currentPage * state.picturesPerPage;
+  const indexOfFirstPicture = indexOfLastPicture - state.picturesPerPage;
+  const currentPictures = state.results.slice(indexOfFirstPicture, indexOfLastPicture);
+
+  // Changer de page : 
+  //  pageNumbers vient de pagination.js 
+  const paginate = (pageNumbers) => {
+    setState(prevState => {
+      return{...prevState, currentPage : pageNumbers}
+    })
+  }
 
   return (
     <div className="App">
       <header>
-        <h1>Picture React App using Pixabay</h1>
+        <h1>Picture React App with pagination using Pixabay's API </h1>
         <Search searchInput={searchInput} searchButton={searchButton} searchEnter={searchEnter} />
       </header>
+
       <main>
-        <div className="allPictures">
-          {state.results.map(value =>(
-            <AllPictures key={value.id} pictures={value}/>
-          ))}
-        </div>
+
+        {  (state.totalHits !== 0 ) ?
+          <div className="allPictures">
+            {currentPictures.map(value =>(
+              (<AllPictures key={value.id} pictures={value}/>) 
+              
+            ))}
+          </div>
+        : (<p className="errorPictures">Picture not available</p>) } 
+
+        <Pagination 
+          totalPictures={state.results.length} 
+          picturesPerPage={state.picturesPerPage} 
+          paginate={paginate} 
+        />
       </main>
     </div>
   );

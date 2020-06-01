@@ -55,6 +55,12 @@ main {
   margin: 0 auto;
 }
 
+main .errorPictures {
+  margin-top: 20px;
+  font-size: 28px;
+  font-weight: bold;
+}
+
 main .allPictures {
   display: flex;
   flex-wrap: wrap;
@@ -65,10 +71,14 @@ main .allPictures {
 
 main .allPictures .picture {
   width: 46%;
-  height: 320px;
+  min-height: 330px;
 }
 
-main .allPictures .picture img {
+main .allPictures .picture  {
+  text-decoration: none;
+}
+
+main .allPictures .picture  img {
   max-width: 100%;
   height: 280px;
   padding: 5px
@@ -77,5 +87,86 @@ main .allPictures .picture img {
 main .allPictures .picture h2 {
   text-transform: capitalize;
   flex: 1 1 100%;
-  color: #FFF
+  color: #FFF;
+
+}
+
+main .navPagination {
+  text-align: center;
+  margin: 10px auto;
+}
+
+main .navPagination nav ul {
+  display: flex;
+  width: 20%;
+  margin: 0 auto;
+  text-align: center;
+}
+
+main .navPagination nav ul li {
+  list-style: none;
+  padding: 0 5px;
+  margin: 15px auto 10px auto
+}
+
+main .navPagination nav ul li a {
+  text-decoration: none;
+  font-family: 'Lato', sans-serif;
+  font-size: 20px;
+  color: #fff;
+  font-weight: bold;
+}
+
+/* Média Queries */
+
+@media screen and (max-width: 359px) {
+
+  header .searchBox input {
+    width: 90%;
+  }
+
+  header .searchBox button {
+    display: block;
+    margin: 10px auto;
+    width: 30%
+  }
+
+
+  main .allPictures .picture {
+    width: 90%;
+  }
+
+  main .navPagination {
+    margin: 0;
+  }
+
+  main .navPagination nav ul {
+    width: 70%;
+  }
+
+}
+
+@media screen and (min-width: 360px) and (max-width: 498px) {
+  header .searchBox input {
+    width: 90%;
+  }
+
+  header .searchBox button {
+    display: block;
+    margin: 10px auto;
+    width: 30%
+  }
+
+
+  main .allPictures .picture {
+    width: 90%;
+  }
+
+  main .navPagination {
+    margin: 0;
+  }
+
+  main .navPagination nav ul {
+    width: 70%;
+  }
 }

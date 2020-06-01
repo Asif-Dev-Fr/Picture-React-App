@@ -5,7 +5,7 @@ const Search = ({searchInput, searchButton, searchEnter}) => {
         <div className="searchBox">
             <input 
                 type="text" 
-                placeholder="Type the name of your picture" 
+                placeholder="Search for a picture" 
                 onChange={searchInput}
                 onKeyPress={searchEnter}
             />

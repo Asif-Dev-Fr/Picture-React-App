@@ -67,7 +67,7 @@ const App = () => {
       axios(API_KEY + "&q=" + state.search + nbrTotalOfPicture ).then(({data}) => {
         let resultPicturesWithEnter = data.hits;
         let totalHitsOfPictures = data.totalHits;
-        console.log(resultPicturesWithEnter);
+        // console.log(resultPicturesWithEnter);
         // console.log(totalHitsOfPictures);
 
         setState(prevState => {

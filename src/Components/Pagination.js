@@ -15,12 +15,12 @@ const Pagination = (props) => {
                 <ul>
                     {pageNumbers.map(value =>(
                         <li key={value}>
-                            <a 
+                            <button 
                                 onClick={() => props.paginate(value)} href="#"
                                 className='listPages'
                             >
                                 {value}
-                            </a>
+                            </button>
                         </li>
                     ))}
                 </ul>
